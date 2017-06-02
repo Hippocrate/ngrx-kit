@@ -1,7 +1,7 @@
 import { IActionHandler, ActionHandlerMetaKey } from './ActionHandler';
 import { IEffectsHandler, EffectsHandlerMetaKey } from './EffectsHandler';
 
-import "reflect-metadata";
+import 'reflect-metadata';
 
 export interface HandlerClass<T> {
     new() : T;
@@ -27,11 +27,11 @@ export class HandlerRegistryBase<T> implements IHandlerRegistry<T> {
         handlers.forEach( handler => {
             const {actionType} = Reflect.getMetadata(this._metaKey, handler) || { actionType: null};
             if (!actionType) {
-                throw `Cannot register handler "${handler.name}" :  The Handler decorator is probably missing`;
+                throw `Cannot register handler '${handler.name}' :  The Handler decorator is probably missing`;
             }
             const existing = this._handlers.get(actionType);
             if (existing && existing !== handler) {
-                throw `Cannot register handler "${handler.name}" : The handler "${existing.name}" is already registered for the action type "${actionType}"`;
+                throw `Cannot register handler '${handler.name}' : The handler '${existing.name}' is already registered for the action type '${actionType}'`;
             }
             this._handlers.set(actionType, handler);
         });

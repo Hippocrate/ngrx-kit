@@ -8,7 +8,7 @@ import {
 
 export interface EffectsModuleConfig {
     handlers: any[];
-    storage: IPersistenceConfiguration
+    storage: IPersistenceConfiguration;
 }
 
 @NgModule({
@@ -21,7 +21,7 @@ export class SignatureEffectsModule {
 
     static runAfterBootstrap(config: EffectsModuleConfig) {
         return run(EffectsModule.runAfterBootstrap(Effects), config);
-    } 
+    }
 }
 
 function run(moduleWithP: ModuleWithProviders, config: EffectsModuleConfig): ModuleWithProviders {

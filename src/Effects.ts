@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Inject, Injector, Injectable , ReflectiveInjector , OpaqueToken } from '@angular/core';
 import { EffectsHandlerResolver } from './Resolver';
 import { Actions, Effect } from '@ngrx/effects';
@@ -6,22 +7,22 @@ import { Observable } from 'rxjs';
 import { Action, Store } from '@ngrx/store';
 import { PersistenceConfiguration, SaveStateEffect } from './persistence';
 import {ActionEffectMetaKey, ActionEffectMetadata} from './EffectDispatcher';
-import {HandlerClass} from './HandlerRegistry';
+import { HandlerClass } from './HandlerRegistry';
 
-export const EffectsHandlerToken = new OpaqueToken("EffectsHandlerToken");
+export const EffectsHandlerToken = new OpaqueToken('EffectsHandlerToken');
 
 export interface EffectInfo {
-    action: Action,
-    handlerClass: HandlerClass<IEffectsHandler>,
-    meta: ActionEffectMetadata,
-    result?: any
+    action: Action;
+    handlerClass: HandlerClass<IEffectsHandler>;
+    meta: ActionEffectMetadata;
+    result?: any;
 }
 
 @Injectable()
 export class Effects {
     private _resolver: EffectsHandlerResolver;
     private _actionCache: Map<Action, EffectInfo> = new Map();
-    
+
     constructor(
         private actions$: Actions,
         private _injector: Injector,
@@ -40,14 +41,14 @@ export class Effects {
     }
 
   @Effect() effects$ = this.actions$
-        .map( action => { 
-            let actionInfo = { 
-                action, 
+        .map( action => {
+            let actionInfo = {
+                action,
                 handlerClass: this._resolver.resolve(action),
                 meta: this.readMeta(action)
             };
             if (!actionInfo.handlerClass) {
-                const errorMsg = `No handler register for action "${action}"`;
+                const errorMsg = `No handler register for action '${action}'`;
                 actionInfo.meta.reject(errorMsg);
                 console.warn(errorMsg)
             }
@@ -62,7 +63,7 @@ export class Effects {
 
             if (result === undefined) {
                 observable = Observable.of([this.emptyAction()]);
-            } 
+            }
             else if (result instanceof Promise) {
                 observable = Observable.from(<any>result);
             }
@@ -73,25 +74,24 @@ export class Effects {
                 observable = Observable.of(result);
             }
 
-            return observable.do( r => {
+            return observable.do<any>( r => {
                 if (meta) {
                     meta.resolve();
                 }
             } ).catch( e => {
                 meta.reject(e);
-                return this.errorAction();
+                return Observable.of(this.errorAction());
             });
         })
         .switchMap( (res: any) => res)
         .map((result: any) => {
-            
             if (result && result[Symbol.iterator] || result instanceof Array) {
                 if (!result.size && !result.length ) {
                     return [this.emptyAction()];
                 }
 
                 return result;
-            } 
+            }
             return [result];
         } )
         .flatMap( (res: any) => res)
@@ -102,15 +102,16 @@ export class Effects {
             if (this.isAction(result) ) {
                 return result;
             }
+            // tslint:disable-next-line:max-line-length
             throw `Invalid effect result '${result}' allowed: Action | Action[] | Promise<void> |  Promise<Action> | Promise<Action[]> | Observable<void> | Observable<Action> | Observable<Action[]> | void`
         })
         .catch( (e, r) => {
             console.error(e);
-            return this.errorAction();
+            return Observable.of(this.errorAction());
         });
 
     isAction(value) {
-        return value && typeof value.type === 'string'
+        return value && typeof value.type === 'string';
     }
 
     emptyAction() {
@@ -127,7 +128,7 @@ export class Effects {
 
     isActionArray(values) {
         if (values && values[Symbol.iterator]) {
-            for (var val of values) {
+            for (const val of values) {
                 if (!this.isAction(val)) {
                     return false;
                 }

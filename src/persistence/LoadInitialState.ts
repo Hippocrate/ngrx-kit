@@ -1,12 +1,12 @@
-import { OpaqueToken, Inject } from "@angular/core";
+import { OpaqueToken, Inject } from '@angular/core';
 import { Action } from '@ngrx/Store';
 import { ISerializableState } from './ISerializableState';
 import { ActionHandler, IActionHandler } from '../ActionHandler';
 import { EffectHandler, IEffectsHandler } from '../EffectsHandler';
 import { IStateStorageToken, IStateStorage } from './IStateStorage';
 
-export const SetInitialStateActionType = "[ACTION] SET THE INITIAL STATE";
-export const LoadInitialStateEffectType = "[EFFECT] SET THE INITIAL STATE";
+export const SetInitialStateActionType = '[ACTION] SET THE INITIAL STATE';
+export const LoadInitialStateEffectType = '[EFFECT] SET THE INITIAL STATE';
 
 export class SetInitialStateAction {
     type = SetInitialStateActionType;

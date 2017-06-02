@@ -1,9 +1,9 @@
-import { OpaqueToken, Inject, Injectable } from "@angular/core";
+import { OpaqueToken, Inject, Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { EffectHandler, IEffectsHandler } from '../EffectsHandler';
 import { IStateStorageToken, IStateStorage } from './IStateStorage';
 
-export const SaveStateEffectType = "[EFFECT] Save the application's state";
+export const SaveStateEffectType = '[EFFECT] Save the application's state';
 
 export class SaveStateEffect implements Action {
     type = SaveStateEffectType;

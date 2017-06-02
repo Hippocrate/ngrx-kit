@@ -1,17 +1,18 @@
 import { Action } from '@ngrx/Store';
-import "reflect-metadata";
+import 'reflect-metadata';
 import { Observable } from 'rxjs/Observable';
 
 import { ActionClass } from './ActionClass';
 
-export const EffectsHandlerMetaKey = "EffectsHandlerMetaKey";
+export const EffectsHandlerMetaKey = 'EffectsHandlerMetaKey';
 
 export interface EffectsHandlerMeta {
     actionType: string;
 }
 
 export interface IEffectsHandler {
-    execute<TAction extends Action>(action: TAction): 
+    execute<TAction extends Action>(action: TAction):
+        // tslint:disable-next-line:max-line-length
         Action | Action[] | Promise<void> | Promise<Action> | Promise<Action[]> | Observable<void> | Observable<Action> | Observable<Action[]> | void;
 }
 
@@ -29,7 +30,7 @@ export function EffectHandler(actionTypeOrClass: string | ActionClass) {
         }
     } 
     if (!actionType) {
-        throw "The action type must be specified";
+        throw 'The action type must be specified';
     }
 
     return function(target: Function) {

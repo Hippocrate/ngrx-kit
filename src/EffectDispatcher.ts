@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store, Action} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-export const ActionEffectMetaKey = "ActionHandlerMetaKey";
+export const ActionEffectMetaKey = 'ActionHandlerMetaKey';
 
 export interface  ActionEffectMetadata {
     token: EffectTicket;

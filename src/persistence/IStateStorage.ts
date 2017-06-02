@@ -1,6 +1,6 @@
-import {OpaqueToken} from "@angular/core";
+import {OpaqueToken} from '@angular/core';
 
-export const IStateStorageToken = new OpaqueToken("IStateStorage");
+export const IStateStorageToken = new OpaqueToken('IStateStorage');
 
 export interface IStateStorage {
     read<T>(): T;
