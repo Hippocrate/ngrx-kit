@@ -1,6 +1,3 @@
 /node_modules/
-/dist/
+/lib/
 /npm-debug.log
-/src/**/*.js
-/src/**/*.js.map
-index.js

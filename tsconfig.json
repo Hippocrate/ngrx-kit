@@ -7,8 +7,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "strictNullChecks": false,
+    "declaration": true,
+    "outDir": "lib",
     "lib": [
       "dom",
       "es2015",
@@ -17,6 +19,9 @@
       "esnext"
     ]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "dist"

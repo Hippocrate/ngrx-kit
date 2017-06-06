@@ -1,4 +1,4 @@
-import {IStateStorage} from './IStateStorage';
+import { IStateStorage } from './IStateStorage';
 
 export class LocalStateStorage implements IStateStorage {
     constructor(private _storageKey: string) {}

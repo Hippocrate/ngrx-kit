@@ -6,7 +6,7 @@ import { IEffectsHandler } from './EffectsHandler';
 import { Observable } from 'rxjs';
 import { Action, Store } from '@ngrx/store';
 import { PersistenceConfiguration, SaveStateEffect } from './persistence';
-import {ActionEffectMetaKey, ActionEffectMetadata} from './EffectDispatcher';
+import { ActionEffectMetaKey, ActionEffectMetadata } from './EffectDispatcher';
 import { HandlerClass } from './HandlerRegistry';
 
 export const EffectsHandlerToken = new OpaqueToken('EffectsHandlerToken');
@@ -48,8 +48,10 @@ export class Effects {
                 meta: this.readMeta(action)
             };
             if (!actionInfo.handlerClass) {
-                const errorMsg = `No handler register for action '${action}'`;
-                actionInfo.meta.reject(errorMsg);
+                const errorMsg = `No handler register for action '${action.type}'`;
+                if (actionInfo.meta) {
+                    actionInfo.meta.reject(errorMsg);
+                }
                 console.warn(errorMsg);
             }
 

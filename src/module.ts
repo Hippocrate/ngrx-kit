@@ -8,13 +8,13 @@ import {
 
 export interface EffectsModuleConfig {
     handlers: any[];
-    storage: IPersistenceConfiguration;
+    storage?: IPersistenceConfiguration;
 }
 
 @NgModule({
     imports: [EffectsModule],
 })
-export class SignatureEffectsModule {
+export class EffectsHandlerModule {
     static run(config: EffectsModuleConfig) {
         return run(EffectsModule.run(Effects), config);
     }

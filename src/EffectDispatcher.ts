@@ -1,7 +1,7 @@
 import 'reflect-metadata';
-import {Injectable} from '@angular/core';
-import {Store, Action} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Store, Action } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 export const ActionEffectMetaKey = 'ActionHandlerMetaKey';
 

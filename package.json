@@ -2,7 +2,7 @@
   "name": "ngrx-kit",
   "version": "1.0.0",
   "author": "Idriss Hippocrate",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "tsc": "tsc",
     "compile": "npm run tsc"

@@ -5,6 +5,7 @@ import { IEffectsHandler, EffectsHandlerMetaKey } from './EffectsHandler';
 export interface HandlerClass<T> {
     new() : T;
 }
+
 export interface IHandlerRegistry<T> {
     register(...handler: HandlerClass<T>[]);
     get(actionType: string): HandlerClass<T>;
