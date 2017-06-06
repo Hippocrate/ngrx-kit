@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "author": "Idriss Hippocrate",
   "main": "index.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "compile": "npm run tsc"
+  },
   "dependencies": {
     "@angular/common": "^4.0.0",
     "@angular/core": "^4.0.0",

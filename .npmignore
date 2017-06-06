@@ -1,3 +1,6 @@
 node_modules
 tsconfig.json
 tslint.json
+npm-debug.log
+/src/**/*.ts
+/src/**/*.js.map
