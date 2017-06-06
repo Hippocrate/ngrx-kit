@@ -17,7 +17,6 @@ export class SetInitialStateAction {
 }
 
 export class SetInitialStateActionHandler implements IActionHandler {
-    
     apply(state: ISerializableState<any>, action: SetInitialStateAction): ISerializableState<any> {
         return state;
     }

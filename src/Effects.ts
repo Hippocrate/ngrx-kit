@@ -50,7 +50,7 @@ export class Effects {
             if (!actionInfo.handlerClass) {
                 const errorMsg = `No handler register for action '${action}'`;
                 actionInfo.meta.reject(errorMsg);
-                console.warn(errorMsg)
+                console.warn(errorMsg);
             }
 
             return actionInfo;
@@ -103,7 +103,7 @@ export class Effects {
                 return result;
             }
             // tslint:disable-next-line:max-line-length
-            throw `Invalid effect result '${result}' allowed: Action | Action[] | Promise<void> |  Promise<Action> | Promise<Action[]> | Observable<void> | Observable<Action> | Observable<Action[]> | void`
+            throw `Invalid effect result '${result}' allowed: Action | Action[] | Promise<void> |  Promise<Action> | Promise<Action[]> | Observable<void> | Observable<Action> | Observable<Action[]> | void`;
         })
         .catch( (e, r) => {
             console.error(e);

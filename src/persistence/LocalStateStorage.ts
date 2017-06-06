@@ -8,9 +8,9 @@ export class LocalStateStorage implements IStateStorage {
             try {
                 const state = JSON.parse(jsonState);
                 return state;
-            } catch(e) {
+            } catch (e) {
                 throw e;
-            } 
+            }
         }
     }
 

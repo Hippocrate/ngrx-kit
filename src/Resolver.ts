@@ -1,7 +1,6 @@
 import { ActionHandlerRegistry, EffectsHandlerRegistry, HandlerClass } from './HandlerRegistry';
 import { IActionHandler } from './ActionHandler';
 import { IEffectsHandler } from './EffectsHandler';
-
 import { Action } from '@ngrx/store';
 
 export class ActionHandlerResolver {
@@ -18,7 +17,7 @@ export class ActionHandlerResolver {
 
 export class EffectsHandlerResolver {
     private _registry?: EffectsHandlerRegistry;
-    
+
     constructor(handlers: any[]) {
         this._registry = new EffectsHandlerRegistry(handlers);
     }

@@ -1,7 +1,6 @@
+import 'reflect-metadata';
 import { IActionHandler, ActionHandlerMetaKey } from './ActionHandler';
 import { IEffectsHandler, EffectsHandlerMetaKey } from './EffectsHandler';
-
-import 'reflect-metadata';
 
 export interface HandlerClass<T> {
     new() : T;
@@ -10,7 +9,6 @@ export interface IHandlerRegistry<T> {
     register(...handler: HandlerClass<T>[]);
     get(actionType: string): HandlerClass<T>;
 }
-
 
 export class HandlerRegistryBase<T> implements IHandlerRegistry<T> {
     _handlers = new Map<string, HandlerClass<T>>();
@@ -31,7 +29,8 @@ export class HandlerRegistryBase<T> implements IHandlerRegistry<T> {
             }
             const existing = this._handlers.get(actionType);
             if (existing && existing !== handler) {
-                throw `Cannot register handler '${handler.name}' : The handler '${existing.name}' is already registered for the action type '${actionType}'`;
+                throw `Cannot register handler '${handler.name}' : `
+                + `The handler '${existing.name}' is already registered for the action type '${actionType}'`;
             }
             this._handlers.set(actionType, handler);
         });

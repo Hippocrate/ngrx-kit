@@ -73,7 +73,7 @@
     ],
     "max-line-length": [
       true,
-      100
+      125
     ],
     "no-require-imports": false,
     "no-trailing-whitespace": true,

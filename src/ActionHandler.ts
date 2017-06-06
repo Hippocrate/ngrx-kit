@@ -1,5 +1,5 @@
-import { Action } from '@ngrx/Store';
 import 'reflect-metadata';
+import { Action } from '@ngrx/Store';
 import { ActionClass } from './ActionClass';
 
 export const ActionHandlerMetaKey = 'ActionHandlerMetaKey';
@@ -29,5 +29,5 @@ export function ActionHandler(actionTypeOrClass: string | ActionClass) {
     }
     return function(target: Function) {
         Reflect.defineMetadata(ActionHandlerMetaKey, {actionType}, target);
-    }
+    };
 }

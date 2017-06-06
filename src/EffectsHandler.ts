@@ -1,7 +1,6 @@
-import { Action } from '@ngrx/Store';
 import 'reflect-metadata';
+import { Action } from '@ngrx/Store';
 import { Observable } from 'rxjs/Observable';
-
 import { ActionClass } from './ActionClass';
 
 export const EffectsHandlerMetaKey = 'EffectsHandlerMetaKey';
@@ -28,12 +27,12 @@ export function EffectHandler(actionTypeOrClass: string | ActionClass) {
             const action = new actionTypeOrClass(null);
             actionType = action.type;
         }
-    } 
+    }
     if (!actionType) {
         throw 'The action type must be specified';
     }
 
     return function(target: Function) {
         Reflect.defineMetadata(EffectsHandlerMetaKey, {actionType}, target);
-    }
+    };
 }

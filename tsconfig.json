@@ -9,14 +9,12 @@
     "allowSyntheticDefaultImports": true,
     "noEmitHelpers": true,
     "strictNullChecks": false,
-    "baseUrl": "",
-    "paths": {
-    },
     "lib": [
       "dom",
       "es2015",
       "es2016",
-      "es2017"
+      "es2017",
+      "esnext"
     ]
   },
   "exclude": [

@@ -11,6 +11,6 @@ export class PersistenceConfiguration {
     constructor(config: IPersistenceConfiguration) {
         this.key = config.key;
         this.autoSave = !!config.autoSave;
-        this.autoSaveDebounce = config.autoSaveDebounce === undefined ? 250 : config.autoSaveDebounce
+        this.autoSaveDebounce = config.autoSaveDebounce === undefined ? 250 : config.autoSaveDebounce;
     }
 }

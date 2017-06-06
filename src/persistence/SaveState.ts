@@ -3,7 +3,7 @@ import { Action, Store } from '@ngrx/store';
 import { EffectHandler, IEffectsHandler } from '../EffectsHandler';
 import { IStateStorageToken, IStateStorage } from './IStateStorage';
 
-export const SaveStateEffectType = '[EFFECT] Save the application's state';
+export const SaveStateEffectType = "[EFFECT] Save the application's state";
 
 export class SaveStateEffect implements Action {
     type = SaveStateEffectType;
@@ -20,7 +20,7 @@ export class SaveStateEffectHandler implements IEffectsHandler {
         store: Store<any>,
         @Inject(IStateStorageToken) private _stateStorage: IStateStorage
     ) {
-        store.select( s => s ).subscribe( s => this.state = s)
+        store.select( s => s ).subscribe( s => this.state = s);
     }
 
     execute(action: SaveStateEffect) {
